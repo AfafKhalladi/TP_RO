@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c4d1974b-88ba-4260-805d-64bb3329b5fd" name="Changes" comment="subject update">
+      <change afterPath="$PROJECT_DIR$/instances/baselines.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/results.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/tap_10_100.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/tap_11_250.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/tap_13_150.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/tap_14_400.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/instances/tap_15_60.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alexscode/teaching/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alexscode/teaching/Main.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2GR7LmGkVEVjOrPyX1abE3yUFC9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/alex/IdeaProjects/TP-RO-M1-BDMA/instances",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/instances" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.alexscode.teaching.tap" />
+      <recent name="com.alexscode.teaching.utilities" />
+      <recent name="com.alexscode.teaching" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.alexscode.teaching.Main" />
+      <module name="TP-RO-M1-BDMA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.alexscode.teaching.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c4d1974b-88ba-4260-805d-64bb3329b5fd" name="Changes" comment="" />
+      <created>1666339495420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666339495420</updated>
+      <workItem from="1666339496963" duration="6200000" />
+      <workItem from="1666352093342" duration="4249000" />
+      <workItem from="1666358111263" duration="3517000" />
+      <workItem from="1666363711783" duration="443000" />
+      <workItem from="1666774737024" duration="1719000" />
+      <workItem from="1667811695838" duration="734000" />
+      <workItem from="1667985368265" duration="2590000" />
+      <workItem from="1668594696102" duration="764000" />
+      <workItem from="1668687304159" duration="4000" />
+      <workItem from="1669392374763" duration="1573000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1666343569504</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666343569504</updated>
+    </task>
+    <task id="LOCAL-00002" summary="fixing pom">
+      <created>1666350474262</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1666350474262</updated>
+    </task>
+    <task id="LOCAL-00003" summary="technical bull****">
+      <created>1666354609308</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1666354609308</updated>
+    </task>
+    <task id="LOCAL-00004" summary="more technical bull****">
+      <created>1666355278473</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1666355278473</updated>
+    </task>
+    <task id="LOCAL-00005" summary="removed java 11 stuff">
+      <created>1666357426475</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1666357426475</updated>
+    </task>
+    <task id="LOCAL-00006" summary="instances and demo code">
+      <created>1666359745867</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1666359745867</updated>
+    </task>
+    <task id="LOCAL-00007" summary="more instances">
+      <created>1666360174722</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1666360174722</updated>
+    </task>
+    <task id="LOCAL-00008" summary="subject">
+      <created>1667994190304</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1667994190304</updated>
+    </task>
+    <task id="LOCAL-00009" summary="subject update">
+      <created>1668595447049</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1668595447049</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <MESSAGE value="fixing pom" />
+    <MESSAGE value="technical bull****" />
+    <MESSAGE value="more technical bull****" />
+    <MESSAGE value="removed java 11 stuff" />
+    <MESSAGE value="instances and demo code" />
+    <MESSAGE value="more instances" />
+    <MESSAGE value="subject" />
+    <MESSAGE value="subject update" />
+    <option name="LAST_COMMIT_MESSAGE" value="subject update" />
+  </component>
+</project>
