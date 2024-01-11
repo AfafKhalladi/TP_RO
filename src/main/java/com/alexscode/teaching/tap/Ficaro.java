@@ -16,19 +16,20 @@ public class Ficaro implements TAPSolver{
         List<Element> ratios = new ArrayList<>();
         
         for (int i = 0; i< ist.size; i++){
-            ratios.add(new Element(i,ist.costs[i]/ist.interest[i]));
+            double ratio = ist.interest[i] != 0 ? ist.costs[i] / ist.interest[i] : Double.MAX_VALUE;
+            ratios.add(new Element(i, ratio));
         }
 
-        Collections.sort(ratios);
+        Collections.sort(ratios, Collections.reverseOrder()); // Sorting in descending order of ratio
         
         int i = 0;
 
         //Respecter les contraintes
-        while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget()){
+        while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget() && i< ratios.size()){
             demo.add(ratios.get(i++).index);
         }
         
         return demo.subList(0, demo.size() - 1);
     }
-    
+
 }
