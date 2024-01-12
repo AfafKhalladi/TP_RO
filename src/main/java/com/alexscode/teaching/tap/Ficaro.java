@@ -3,11 +3,11 @@ package com.alexscode.teaching.tap;
 import java.util.*;
 import com.alexscode.teaching.utilities.Pair;
 import com.alexscode.teaching.utilities.Element;
-import com.alexscode.teaching.tap.KnapsackMemoization;
+import com.alexscode.teaching.tap.KnapsackRatio;
 
 public class Ficaro implements TAPSolver{
 
-    KnapsackMemoization knapsackSolver = new KnapsackMemoization(); // Knapsack solver instance
+    KnapsackRatio knapsackSolver = new KnapsackRatio(); // Knapsack solver instance
 
     @Override
     public List<Integer> solve(Instance ist) {
@@ -43,17 +43,16 @@ public class Ficaro implements TAPSolver{
         // return finalSequence;
     }
 
-    // inspired solving method from "https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/KnapsackMemoization.java"
     private List<Integer> solveKnapsack(Instance ist, double remainingTime) {
         // Convert the remaining time to an integer if needed
         int capacity = (int) remainingTime;
-    
+
         boolean[] selected = knapsackSolver.knapSack(capacity, ist.getCosts(), ist.getInterest(), ist.getSize());
-    
+
         // Construct the list of selected query indices
         List<Integer> selectedQueries = new ArrayList<>();
         for (int i = 0; i < selected.length; i++) {
-            if (selected[i] == true) { // If the query is selected in the knapsack solution
+            if (selected[i]) { // If the query is selected in the knapsack solution
                 selectedQueries.add(i);
             }
         }
