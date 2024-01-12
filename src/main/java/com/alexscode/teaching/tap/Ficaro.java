@@ -1,35 +1,82 @@
 package com.alexscode.teaching.tap;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
+import com.alexscode.teaching.utilities.Pair;
 import com.alexscode.teaching.utilities.Element;
+import com.alexscode.teaching.tap.KnapsackMemoization;
 
 public class Ficaro implements TAPSolver{
 
+    KnapsackMemoization knapsackSolver = new KnapsackMemoization(); // Knapsack solver instance
+
     @Override
     public List<Integer> solve(Instance ist) {
-        
-        List<Integer> demo = new ArrayList<>();
-        Objectives obj = new Objectives(ist);
-        List<Element> ratios = new ArrayList<>();
-        
-        for (int i = 0; i< ist.size; i++){
-            double ratio = ist.interest[i] != 0 ? ist.costs[i] / ist.interest[i] : Double.MAX_VALUE;
-            ratios.add(new Element(i, ratio));
-        }
+        double totalTBudget = ist.getTimeBudget();
+        double ratioT = 0.7; // for splitting the time budget into tk & to v
+        double tk = totalTBudget * ratioT; // time for query execs
+        double to = totalTBudget - tk; // time for other tasks (Knapsack & TSP solving)
 
-        Collections.sort(ratios, Collections.reverseOrder()); // Sorting in descending order of ratio
-        
-        int i = 0;
+        List<Integer> K = solveKnapsack(ist, tk);
+        System.out.println("==> solveKnapsack : " + K);
+        return K;
+                
+        //List<Integer> executedQueries = new ArrayList<>();
+        //double elapsedTime = 0;
 
-        //Respecter les contraintes
-        while (obj.distance(demo) < ist.getMaxDistance() && obj.time(demo) < ist.getTimeBudget() && i< ratios.size()){
-            demo.add(ratios.get(i++).index);
-        }
+        // for (Integer queryIndex : K) {
+        //     executedQueries.add(queryIndex);
+        //     elapsedTime += ist.getCosts()[queryIndex];
+
+        //     // reevaluate remaining time and adjust selected queries if necessary
+        //     if (elapsedTime + getTotalCost(ist, K) > tk) {
+        //         K = solveKnapsack(ist, tk - elapsedTime);
+        //     } else if (elapsedTime + getTotalCost(ist, K) < tk) {
+        //         List<Integer> remainingQueries = new ArrayList<>(getAllQueryIndices(ist));
+        //         remainingQueries.removeAll(executedQueries);
+        //         K = solveKnapsack(ist, tk - elapsedTime, remainingQueries);
+        //     }
+        // }
+
+        // // solving TSP with executed queries
+        // List<Integer> finalSequence = solveTSP(ist, executedQueries);
         
-        return demo.subList(0, demo.size() - 1);
+        // return finalSequence;
     }
 
+    // inspired solving method from "https://github.com/TheAlgorithms/Java/blob/master/src/main/java/com/thealgorithms/dynamicprogramming/KnapsackMemoization.java"
+    private List<Integer> solveKnapsack(Instance ist, double remainingTime) {
+        // Convert the remaining time to an integer if needed
+        int capacity = (int) remainingTime;
+    
+        boolean[] selected = knapsackSolver.knapSack(capacity, ist.getCosts(), ist.getInterest(), ist.getSize());
+    
+        // Construct the list of selected query indices
+        List<Integer> selectedQueries = new ArrayList<>();
+        for (int i = 0; i < selected.length; i++) {
+            if (selected[i] == true) { // If the query is selected in the knapsack solution
+                selectedQueries.add(i);
+            }
+        }
+        return selectedQueries;
+    }
+
+    private double getTotalCost(Instance ist, List<Integer> queries) {
+        // Calculate the total cost of a list of queries
+        return queries.stream().mapToDouble(ist.getCosts()::[q]).sum();
+    }
+
+    private List<Integer> solveTSP(Instance ist, List<Integer> executedQueries) {
+        // Implement your TSP solution here for the given list of executed queries
+        return executedQueries; // Placeholder
+    }
+
+    private List<Integer> getAllQueryIndices(Instance ist) {
+        // Get a list of all query indices from the instance
+        List<Integer> indices = new ArrayList<>();
+        for (int i = 0; i < ist.getSize(); i++) {
+            indices.add(i);
+        }
+        return indices;
+    }
+    
 }

@@ -1,8 +1,6 @@
 package com.alexscode.teaching.tap;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 import com.alexscode.teaching.utilities.Element;
 
 public class GreedyRatioSolver implements TAPSolver {
