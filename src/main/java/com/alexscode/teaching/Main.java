@@ -1,11 +1,5 @@
 package com.alexscode.teaching;
-
-import com.alexscode.teaching.tap.Ficaro;
-import com.alexscode.teaching.tap.GreedyRatioSolver;
-import com.alexscode.teaching.tap.Instance;
-import com.alexscode.teaching.tap.Objectives;
-import com.alexscode.teaching.tap.TAPSolver;
-
+import com.alexscode.teaching.tap.*;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -24,17 +18,15 @@ public class Main {
         Instance tap_13_medium = Instance.readFile("./instances/tap_13_150.dat", 1200, 150);
         Instance tap_14_big = Instance.readFile("./instances/tap_14_400.dat", 6600, 540);
 
-        Objectives obj = new Objectives(f4_1_big);
+        Objectives obj = new Objectives(f4_small); // the instance 
 
-        TAPSolver solver = new Ficaro(); // put the class you want to compile here
-        List<Integer> solution = solver.solve(f4_1_big); // the instance 
+        TAPSolver solver = new GreedyRatioSolver(); // put the class you want to compile here
+        List<Integer> solution = solver.solve(f4_small); // the instance 
 
         System.out.println("Interet: " + obj.interest(solution));
         System.out.println("Temps: " + obj.time(solution));
         System.out.println("Distance: " + obj.distance(solution));
-        System.out.println("Feasible ? " + isSolutionFeasible(f4_1_big, solution));
-        
-        //System.out.println("Time budget :" + f4_1_big.getTimeBudget() + " | Max distance :" + f4_1_big.getMaxDistance());
+        System.out.println("Feasible ? " + isSolutionFeasible(f4_small, solution)); // the instance 
     }
 
     public static boolean isSolutionFeasible(Instance ist, List<Integer> sol){
