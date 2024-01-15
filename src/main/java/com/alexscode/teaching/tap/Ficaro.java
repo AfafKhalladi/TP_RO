@@ -9,7 +9,12 @@ public class Ficaro implements TAPSolver {
     @Override
     public List<Integer> solve(Instance ist) {
         double totalTBudget = ist.getTimeBudget();
-        double ratioT = 0.7; // for splitting the time budget into tk & to v
+        double ratioT; // for splitting the time budget into tk & to v
+        if (ist.getSize() <= 250) {
+            ratioT = 0.1;
+        } else {
+            ratioT = 0.7;
+        }
         double tk = totalTBudget * ratioT; // time for query execs
         double to = totalTBudget - tk; // time for other tasks (Knapsack & TSP solving)
 
