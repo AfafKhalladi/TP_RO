@@ -2,10 +2,8 @@ package com.alexscode.teaching.tap;
 
 import java.util.*;
 import com.alexscode.teaching.utilities.Pair;
-import com.alexscode.teaching.utilities.Element;
-import com.alexscode.teaching.tap.KnapsackRatio;
 
-public class Ficaro implements TAPSolver{
+public class Ficaro implements TAPSolver {
 
     KnapsackRatio knapsackSolver = new KnapsackRatio(); // Knapsack solver instance
 
@@ -84,13 +82,13 @@ public class Ficaro implements TAPSolver{
 
     private double getTotalCost(Instance ist, List<Integer> queries) {
         // Calculate the total cost of a list of queries
-    return queries.stream().mapToDouble(queryIndex -> ist.getCosts()[queryIndex]).sum();
+        return queries.stream().mapToDouble(queryIndex -> ist.getCosts()[queryIndex]).sum();
     }
 
     private List<Integer> solveTSP(Instance ist, List<Integer> executedQueries) {
         int numCities = executedQueries.size();
-        int maxIterations = ist.size * 10 ; // ADJUST THIS
-        int tabuListSize = ist.size / 10 ; // ADJUST THIS
+        int maxIterations = ist.size * 10;
+        int tabuListSize = ist.size / 10;
 
         List<Integer> bestSolution = new ArrayList<>(executedQueries);
         List<Integer> currentSolution = new ArrayList<>(executedQueries);
@@ -130,6 +128,21 @@ public class Ficaro implements TAPSolver{
                 }
             }
         }
+        // Calculate the total distance of the TSP solution
+        int totalDistance = calculateTourCost(bestSolution, ist);
+
+        // Check if the total distance surpasses maxDistance
+        while (totalDistance > ist.getMaxDistance()) {
+            // Remove a query from the TSP solution
+            if (!bestSolution.isEmpty()) {
+                int removedQuery = bestSolution.remove(0);
+                totalDistance = calculateTourCost(bestSolution, ist);
+                System.out.println("Removed query " + removedQuery + " to satisfy maxDistance constraint.");
+            } else {
+                // If there are no more queries to remove, break the loop
+                break;
+            }
+        }
 
         return bestSolution;
     }
@@ -159,5 +172,5 @@ public class Ficaro implements TAPSolver{
         }
         return indices;
     }
-    
+
 }
