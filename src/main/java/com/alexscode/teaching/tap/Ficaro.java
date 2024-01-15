@@ -15,8 +15,8 @@ public class Ficaro implements TAPSolver {
         double to = totalTBudget - tk; // time for other tasks (Knapsack & TSP solving)
 
         List<Integer> K = solveKnapsack(ist, to);
-        System.out.println("==> solveKnapsack : " + K);
         List<Integer> E = new ArrayList<>(); // executed queries
+
         double elapsedTime = 0;
         // iteratively execute queries and adjust with Knapsack
         for (int queryIndex : K) {
@@ -34,7 +34,6 @@ public class Ficaro implements TAPSolver {
             }
         }
         // solving TSP with executed queries
-        System.out.println("==> solveTSP : " + solveTSP(ist, E));
         return solveTSP(ist, E);
     }
 
