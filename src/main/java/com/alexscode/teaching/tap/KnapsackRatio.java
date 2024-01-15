@@ -35,7 +35,6 @@ public class KnapsackRatio {
                 currentWeight += item.weight;
             }
         }
-
         return isIncluded;
     }
 }

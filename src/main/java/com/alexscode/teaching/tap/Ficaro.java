@@ -1,11 +1,10 @@
 package com.alexscode.teaching.tap;
-
 import java.util.*;
-import com.alexscode.teaching.utilities.Pair;
+import com.alexscode.teaching.utilities.*;
 
 public class Ficaro implements TAPSolver {
-
-    KnapsackRatio knapsackSolver = new KnapsackRatio(); // Knapsack solver instance
+    
+    KnapsackRatio knapsackSolver = new KnapsackRatio(); // knapsack solver instance
 
     @Override
     public List<Integer> solve(Instance ist) {
@@ -14,11 +13,11 @@ public class Ficaro implements TAPSolver {
         double tk = totalTBudget * ratioT; // time for query execs
         double to = totalTBudget - tk; // time for other tasks (Knapsack & TSP solving)
 
-        List<Integer> K = solveKnapsack(ist, to);
+        List<Integer> K = solveKnapsack(ist, to); // knapsack results
         List<Integer> E = new ArrayList<>(); // executed queries
 
+        // iteratively execute queries and adjust with knapsack
         double elapsedTime = 0;
-        // iteratively execute queries and adjust with Knapsack
         for (int queryIndex : K) {
             elapsedTime += ist.getCosts()[queryIndex]; // simulating query execution
             E.add(queryIndex);
@@ -37,14 +36,13 @@ public class Ficaro implements TAPSolver {
         return solveTSP(ist, E);
     }
 
+// ----------------------- 
+
+    // knapsack solver
     private List<Integer> solveKnapsack(Instance ist, double remainingTime) {
-        // convert the remaining time to an integer
         int capacity = (int) remainingTime;
-
         boolean[] selected = knapsackSolver.knapSack(capacity, ist.getCosts(), ist.getInterest(), ist.getSize());
-
-        // construct the list of selected query indices
-        List<Integer> selectedQueries = new ArrayList<>();
+        List<Integer> selectedQueries = new ArrayList<>(); // construct the list of selected query indices
         for (int i = 0; i < selected.length; i++) {
             if (selected[i]) { // if the query is selected in the knapsack solution
                 selectedQueries.add(i);
@@ -53,22 +51,21 @@ public class Ficaro implements TAPSolver {
         return selectedQueries;
     }
 
+    // supplement solveKnapsack method with remaining queries
     private List<Integer> solveKnapsack(Instance ist, double remainingTime, List<Integer> remainingQueries) {
         int capacity = (int) remainingTime;
-
-        // filter the weights and values based on remainingQueries
-        double[] filteredWeights = new double[remainingQueries.size()];
-        double[] filteredValues = new double[remainingQueries.size()];
+        double[] filteredWeights = new double[remainingQueries.size()]; // filter the weights based on remainingQueries to be considered by the knapsack solver
+        double[] filteredValues = new double[remainingQueries.size()]; // filter values also
         for (int i = 0; i < remainingQueries.size(); i++) {
             int queryIndex = remainingQueries.get(i);
             filteredWeights[i] = ist.getCosts()[queryIndex];
             filteredValues[i] = ist.getInterest()[queryIndex];
         }
 
-        boolean[] selected = knapsackSolver.knapSack(capacity, filteredWeights, filteredValues,
-                remainingQueries.size());
+        // use the knapsack solver to select the best combination of queries based on their costs and interest values
+        boolean[] selected = knapsackSolver.knapSack(capacity, filteredWeights, filteredValues, remainingQueries.size());
 
-        // construct the list of selected query indices
+        // translate the boolean selection array into a list of query indices. If a query is selected (true in the array), add its index to the list of selected queries.
         List<Integer> selectedQueries = new ArrayList<>();
         for (int i = 0; i < selected.length; i++) {
             if (selected[i]) {
@@ -76,14 +73,15 @@ public class Ficaro implements TAPSolver {
             }
         }
 
-        return selectedQueries;
+        return selectedQueries; // return the list of selected queries which represents the optimized set of queries within the given time constraint.
     }
 
+    // calculate the total cost of a list of queries
     private double getTotalCost(Instance ist, List<Integer> queries) {
-        // Calculate the total cost of a list of queries
         return queries.stream().mapToDouble(queryIndex -> ist.getCosts()[queryIndex]).sum();
     }
 
+    // TSP solver
     private List<Integer> solveTSP(Instance ist, List<Integer> executedQueries) {
         int numCities = executedQueries.size();
         int maxIterations = ist.size * 10;
@@ -127,10 +125,10 @@ public class Ficaro implements TAPSolver {
                 }
             }
         }
-        // Calculate the total distance of the TSP solution
+        // calculate the total distance of the TSP solution
         int totalDistance = calculateTourCost(bestSolution, ist);
 
-        // Check if the total distance surpasses maxDistance
+        // check if the total distance surpasses maxDistance
         while (totalDistance > ist.getMaxDistance()) {
             // Remove a query from the TSP solution
             if (!bestSolution.isEmpty()) {
@@ -142,7 +140,6 @@ public class Ficaro implements TAPSolver {
                 break;
             }
         }
-
         return bestSolution;
     }
 
@@ -163,13 +160,12 @@ public class Ficaro implements TAPSolver {
         return totalCost;
     }
 
+    // get a list of all query indices from the instance
     private List<Integer> getAllQueryIndices(Instance ist) {
-        // Get a list of all query indices from the instance
         List<Integer> indices = new ArrayList<>();
         for (int i = 0; i < ist.getSize(); i++) {
             indices.add(i);
         }
         return indices;
     }
-
 }
