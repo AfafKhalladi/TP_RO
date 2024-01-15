@@ -36,7 +36,7 @@ public class Ficaro implements TAPSolver {
         return solveTSP(ist, E);
     }
 
-// ----------------------- 
+// ----------------------- Solving Methods ------------------------
 
     // knapsack solver
     private List<Integer> solveKnapsack(Instance ist, double remainingTime) {
